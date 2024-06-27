@@ -1,0 +1,56 @@
+validDataset:
+  - case: "valid input"
+    input:
+      kode_unit: "57201"
+      nama_unit: "Sistem Informasi"
+      kode_jenjang: S1
+    expected: null
+invalidDataset:
+  - case: "kode unit is required"
+    input:
+      kode_unit: null
+      nama_unit: "Sistem Informasi"
+      kode_jenjang: S1
+    expected: "The kode unit field is required."
+  - case: "kode unit is max 10"
+    input:
+      kode_unit: hdtilttqwsp
+      nama_unit: "Sistem Informasi"
+      kode_jenjang: S1
+    expected: "The kode unit field must not be greater than 10 characters."
+  - case: "kode unit is unique"
+    input:
+      kode_unit: unique
+      nama_unit: "Sistem Informasi"
+      kode_jenjang: S1
+    expected: "The kode unit has already been taken."
+  - case: "nama unit is required"
+    input:
+      kode_unit: "57201"
+      nama_unit: null
+      kode_jenjang: S1
+    expected: "The nama unit field is required."
+  - case: "nama unit is max 100"
+    input:
+      kode_unit: "57201"
+      nama_unit: bkeqygitfzejaqttooehhlsosqnlprhueidhxhnxvjnnhpvhmelpfgqjiyfanyciayreqgnajjiekdziouuxylhhrbfjsszdyhzna
+      kode_jenjang: S1
+    expected: "The nama unit field must not be greater than 100 characters."
+  - case: "kode jenjang is required"
+    input:
+      kode_unit: "57201"
+      nama_unit: "Sistem Informasi"
+      kode_jenjang: null
+    expected: "The kode jenjang field is required."
+  - case: "kode jenjang is max 10"
+    input:
+      kode_unit: "57201"
+      nama_unit: "Sistem Informasi"
+      kode_jenjang: ptpmyspsfhf
+    expected: "The kode jenjang field must not be greater than 10 characters."
+  - case: "kode jenjang is in D2,D3,D4,S1,S2,S3,Profesi"
+    input:
+      kode_unit: "57201"
+      nama_unit: "Sistem Informasi"
+      kode_jenjang: A
+    expected: "The selected kode jenjang is invalid."

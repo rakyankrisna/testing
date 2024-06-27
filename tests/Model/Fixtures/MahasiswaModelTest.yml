@@ -1,0 +1,65 @@
+validDataset:
+  - case: "valid input"
+    input:
+      nim: "1234567890"
+      nama_mahasiswa: "Sentra Vidya Utama"
+      id_unit: dependency.UnitKerja
+      id_periode: dependency.PeriodeAkademik
+    expected: null
+invalidDataset:
+  - case: "nim is required"
+    input:
+      nim: null
+      nama_mahasiswa: "Sentra Vidya Utama"
+      id_unit: dependency.UnitKerja
+      id_periode: dependency.PeriodeAkademik
+    expected: "The nim field is required."
+  - case: "nim is max 30"
+    input:
+      nim: hesogupzqrmxarnibiuabrefsjwhfkf
+      nama_mahasiswa: "Sentra Vidya Utama"
+      id_unit: dependency.UnitKerja
+      id_periode: dependency.PeriodeAkademik
+    expected: "The nim field must not be greater than 30 characters."
+  - case: "nama mahasiswa is required"
+    input:
+      nim: "1234567890"
+      nama_mahasiswa: null
+      id_unit: dependency.UnitKerja
+      id_periode: dependency.PeriodeAkademik
+    expected: "The nama mahasiswa field is required."
+  - case: "nama mahasiswa is max 100"
+    input:
+      nim: "1234567890"
+      nama_mahasiswa: vixborcyasorlyxozwgkujogwzkzgxpxdcqslgpubpodmlekxplsqrnmemuxjtsrtvsljnxqvgrdlgxntkyzpwsoaszpqudpoisui
+      id_unit: dependency.UnitKerja
+      id_periode: dependency.PeriodeAkademik
+    expected: "The nama mahasiswa field must not be greater than 100 characters."
+  - case: "id unit is required"
+    input:
+      nim: "1234567890"
+      nama_mahasiswa: "Sentra Vidya Utama"
+      id_unit: null
+      id_periode: dependency.PeriodeAkademik
+    expected: "The id unit field is required."
+  - case: "id unit is exists in ms_unit_kerja"
+    input:
+      nim: "1234567890"
+      nama_mahasiswa: "Sentra Vidya Utama"
+      id_unit: A
+      id_periode: dependency.PeriodeAkademik
+    expected: "The selected id unit is invalid."
+  - case: "id periode is required"
+    input:
+      nim: "1234567890"
+      nama_mahasiswa: "Sentra Vidya Utama"
+      id_unit: dependency.UnitKerja
+      id_periode: null
+    expected: "The id periode field is required."
+  - case: "id periode is exists in ms_periode_akademik"
+    input:
+      nim: "1234567890"
+      nama_mahasiswa: "Sentra Vidya Utama"
+      id_unit: dependency.UnitKerja
+      id_periode: A
+    expected: "The selected id periode is invalid."

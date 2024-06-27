@@ -1,0 +1,32 @@
+validDataset:
+  - case: "valid input"
+    input:
+      kode_periode: "20241"
+      nama_periode: "Gasal 2024/2025"
+    expected: null
+invalidDataset:
+  - case: "kode periode is required"
+    input:
+      kode_periode: null
+      nama_periode: "Gasal 2024/2025"
+    expected: "The kode periode field is required."
+  - case: "kode periode is max 10"
+    input:
+      kode_periode: fmvpfevydgi
+      nama_periode: "Gasal 2024/2025"
+    expected: "The kode periode field must not be greater than 10 characters."
+  - case: "kode periode is unique"
+    input:
+      kode_periode: unique
+      nama_periode: "Gasal 2024/2025"
+    expected: "The kode periode has already been taken."
+  - case: "nama periode is required"
+    input:
+      kode_periode: "20241"
+      nama_periode: null
+    expected: "The nama periode field is required."
+  - case: "nama periode is max 100"
+    input:
+      kode_periode: "20241"
+      nama_periode: kcqumnbxmzidehwmysaqajnrhbehrnhiwddbcqqzcwrlyfilswcdjmmiugnfbjjnhkgjiolfvtzsxfofnhfoxdquqxdyalexvgixu
+    expected: "The nama periode field must not be greater than 100 characters."
